@@ -1,0 +1,7 @@
+Steps.md
+data/
+.vscode/
+.venv/
+lib/
+__pycache__/
+.env

@@ -1,0 +1,30 @@
+# frontend
+streamlit
+python-dotenv
+
+# PDF & Parsing
+PyMuPDF
+pdfminer.six
+arxiv
+# grobid-client
+
+# LLM + LangChain
+langchain
+langchain_huggingface
+langchain_chroma
+langchain_groq
+sentence-transformers
+chromadb
+faiss-cpu
+
+# Agents
+crewai
+
+# Visualization
+networkx
+pyvis
+
+# Other utilities
+requests
+tqdm
+
