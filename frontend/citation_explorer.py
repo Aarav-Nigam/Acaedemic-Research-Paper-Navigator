@@ -146,7 +146,7 @@ def render_citation_ui():
                                 st.markdown(f"**📖 Venue:** {ref['venue']}")
                             if ref.get('abstract'):
                                 st.markdown("**📝 Abstract:**")
-                                st.text_area("", ref['abstract'][:500] + "..." if len(ref['abstract']) > 500 else ref['abstract'], height=100, key=f"abstract_{i}")
+                                st.text_area("", ref['abstract'][:500] + "..." if len(ref['abstract']) > 500 else ref['abstract'], height=100, key=f"abstract_{i}",label_visibility="collapsed")
                         
                         # Raw reference text if available
                         if ref.get('raw_text'):
@@ -190,7 +190,7 @@ def render_citation_ui():
                     text_output.append(f"{i+1}. {title}\nAuthors: {authors}\nYear: {year}\n")
                 
                 full_text = "\n".join(text_output)
-                st.text_area("📋 Copy this text:", full_text, height=200)
+                st.text_area("📋 Copy this text:", full_text, height=200,label_visibility="collapsed")
         
         with col2:
             if st.button("📊 Generate Report"):
