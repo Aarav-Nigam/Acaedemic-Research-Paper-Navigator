@@ -1,31 +1,35 @@
+
+# Updated backend/summarizer.py
 from langchain_groq import ChatGroq
-from langchain.prompts import PromptTemplate
-from langchain.chains import LLMChain
-
-
 from dotenv import load_dotenv
 import os
 
 load_dotenv()
 
-os.environ["GROQ_API"] = os.getenv("GROQ_API")
-
-def summarize_text(text, model="gpt-4"):
-    llm = ChatGroq(model="qwen-qwq-32b", groq_api_key=os.environ["GROQ_API"], temperature=0.7)
-
-    prompt = PromptTemplate.from_template("""
-You are a helpful academic assistant. Given a scientific paper's text, extract the following:
-1. 📌 TL;DR summary (3-5 bullet points)
-2. 🧠 Key contributions
-3. ⚠️ Limitations
-4. 📢 Major claims (starting with phrases like "We propose", "Our results show", etc.)
-
-Text:
-{text}
-
-Respond clearly using markdown formatting.
-""")
-
-    chain = LLMChain(llm=llm, prompt=prompt)
-    result = chain.run(text=text[:8000])  # Token-safe limit
-    return result
+def summarize_text(text, custom_prompt=""):
+    """Generate summary using Groq API with optional custom prompt"""
+    try:
+        llm = ChatGroq(
+            model="qwen-qwq-32b",
+            groq_api_key=os.getenv("GROQ_API"),
+            temperature=0.3
+        )
+        
+        base_prompt = f"""
+        {custom_prompt if custom_prompt else 'Please provide a comprehensive summary of the following document(s).'}
+        
+        Focus on:
+        1. Main topics and themes
+        2. Key findings and insights
+        3. Important conclusions
+        4. Significant data or results
+        
+        Document(s) to summarize:
+        {text[:8000]}  # Limit text to avoid token limits
+        """
+        
+        response = llm.invoke(base_prompt)
+        return response.content
+        
+    except Exception as e:
+        return f"Error generating summary: {str(e)}"
