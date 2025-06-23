@@ -1,3 +1,7 @@
+# patch_sqlite.py
+import sys
+import pysqlite3
+sys.modules["sqlite3"] = pysqlite3
 
 import streamlit as st
 from frontend import upload, qa_chat
@@ -5,10 +9,6 @@ from frontend import summary, citation_explorer, citation_graph, agents_demo, ag
 from utils.session_manager import SessionManager
 from utils.pdf_utils import cleanup_user_data
 
-# patch_sqlite.py
-import sys
-import pysqlite3
-sys.modules["sqlite3"] = pysqlite3
 
 
 # Configure page
