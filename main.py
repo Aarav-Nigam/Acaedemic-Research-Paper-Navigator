@@ -28,8 +28,8 @@ pages = {
     "Auto Summary": summary.render_summary_ui,
     "Citation Extractor & Explorer": citation_explorer.render_citation_ui,
     "Citation Graph": citation_graph.render_citation_graph_ui,
-    "Agents Demo": agents_demo.render_agents_ui,
-    "Agent Pipeline": agent_pipeline.render_agent_pipeline_ui
+    "Crew Learning": agents_demo.render_agents_ui,
+    "Individual Learning": agent_pipeline.render_agent_pipeline_ui
 }
 
 def render_session_info():

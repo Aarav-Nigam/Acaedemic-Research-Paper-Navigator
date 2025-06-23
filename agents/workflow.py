@@ -1,39 +1,48 @@
 from crewai import Crew
 from agents.roles import get_agents
 
-def run_demo_crew(llm):
-    scout, summarizer, qa, curator = get_agents(llm)
+def run_teaching_crew(topic: str, llm):
+    scout, summarizer, qa, insight = get_agents(llm)
 
     crew = Crew(
-        agents=[scout, summarizer, qa, curator],
+        agents=[scout, summarizer, qa, insight],
         tasks=[
             {
-                "description": "Scout for 5 recent academic papers on LLM Interpretability.",
+                "description": f"Find 5 recent academic papers or blogs about {topic}.",
                 "agent": scout,
-                "input": "LLM Interpretability",
-                "expected_output": "List of 5 recent arXiv papers"
+                "input": topic,
+                "expected_output": "List of resources"
             },
             {
-                "description": "Summarize the 5 papers retrieved by the Scout Agent.",
+                "description": f"Summarize the materials found on {topic}.",
                 "agent": summarizer,
                 "depends_on": scout,
-                "expected_output": "Summary of those 5 papers"
+                "expected_output": "Concise summary and key ideas"
             },
             {
-                "description": "Answer common questions about the summarized papers.",
+                "description": f"Simulate 3 common student questions about {topic} and answer them.",
                 "agent": qa,
                 "depends_on": summarizer,
-                "expected_output": "Answers to 3 common questions about LLM interpretability"
+                "expected_output": "Detailed Q&A"
             },
             {
-                "description": "Create a citation graph based on the papers found by the Scout Agent.",
-                "agent": curator,
-                "depends_on": scout,
-                "expected_output": "Citation graph of those 5 papers"
-            }
+                "description": f"Extract key insights and trends for {topic}.",
+                "agent": insight,
+                "depends_on": summarizer,
+                "expected_output": "Takeaways and future directions"
+            },
         ],
-        verbose=True
+        verbose=True,
+        return_intermediate_steps=True
     )
 
-    result = crew.kickoff()
-    return result
+    crew_output = crew.kickoff()
+    task_outputs = []
+    for step in crew_output.tasks_output:
+        task_outputs.append({
+            "description": step.description,
+            "agent": getattr(step, "agent", "Unknown Agent"),
+            "output": step.raw  # You could also use step.summary
+        })
+
+    return task_outputs

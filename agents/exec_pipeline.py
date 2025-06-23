@@ -21,6 +21,6 @@ def run_qa_agent(question, context):
     *_, qa, _ = get_agents(llm)
     return qa.kickoff(f"Answer the question: '{question}' based on:\n\n{context}")
 
-def run_curator_agent(topic):
-    *_, curator = get_agents(llm)
-    return curator.kickoff(f"Build a citation graph for papers on {topic}")
+def run_insight_agent(summary_content):
+    *_, insight = get_agents(llm)
+    return insight.kickoff(f"From the following paper summaries, extract insights, challenges, and trends:\n\n{summary_content}")

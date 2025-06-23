@@ -51,18 +51,17 @@ def get_agents(llm):
         llm=llm
     )
 
-    # Agent 4: Map Curator Agent
-    # Purpose: Build and maintain a visual citation graph for the retrieved papers
-    curator_agent = Agent(
-        role="Map Curator",
-        goal="Construct and curate an interactive citation graph of academic papers to show inter-paper relationships.",
+# Agent 4: Insight Generator Agent
+    insight_agent = Agent(
+        role="Insight Generator",
+        goal="Generate key insights, emerging trends, and challenges from a set of academic papers.",
         backstory=(
-            "An information architect focused on mapping influence across scientific literature. "
-            "Can identify citations, build knowledge graphs, and visualize clusters of related research."
+            "A research analyst with expertise in identifying patterns across academic literature. "
+            "Highlights new trends, common challenges, and noteworthy research directions."
         ),
-        tools=[],  # You could later integrate NetworkX, PyVis, or graph tools here
+        tools=[],  # Could later integrate NLP/statistical tools
         verbose=True,
         llm=llm
     )
 
-    return scout_agent, summarizer_agent, qa_agent, curator_agent
+    return scout_agent, summarizer_agent, qa_agent, insight_agent
