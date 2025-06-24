@@ -23,11 +23,8 @@ def render_agent_pipeline_ui():
                 result = run_scout_agent(topic)
                 st.success("✅ Papers fetched!")
 
-                view = st.radio("Display format:", ["📄 Rendered", "📜 Code"], horizontal=True)
-                if view == "📄 Rendered":
-                    st.markdown(result, unsafe_allow_html=True)
-                else:
-                    st.code(result)
+                st.markdown(result, unsafe_allow_html=True)
+                
 
                 st.download_button("📥 Download Paper List", result.raw, file_name="scouted_papers.md")
 
