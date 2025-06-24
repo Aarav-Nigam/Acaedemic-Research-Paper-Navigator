@@ -115,7 +115,8 @@ def render_citation_ui():
                     # Main citation card
                     st.markdown(
                         f"""
-                        <div style='background-color: #f8f9fa; padding: 15px; border-radius: 10px; border-left: 4px solid #007bff; margin: 10px 0;'>
+                        
+                        <div style='background-color: rgba(0, 123, 255, 0.1); color: inherit; padding: 15px; border-radius: 10px; border-left: 4px solid #007bff; margin: 10px 0;'>
                             <h4 style='margin-bottom: 10px; color: #007bff;'>{i+1}. {title}</h4>
                             <p style='margin: 5px 0;'><strong>👥 Authors:</strong> {', '.join([a.get('name', str(a)) if isinstance(a, dict) else str(a) for a in authors]) if authors else 'N/A'}</p>
                             <p style='margin: 5px 0;'><strong>📅 Year:</strong> {year}</p>
@@ -166,7 +167,8 @@ def render_citation_ui():
                     
                     st.markdown(
                         f"""
-                        <div style='background-color: #ffffff; padding: 10px; border-radius: 8px; border: 1px solid #dee2e6; margin: 5px 0;'>
+
+                        <div style='background-color: rgba(0, 123, 255, 0.1); color: inherit; padding: 15px; border-radius: 10px; border-left: 4px solid #007bff; margin: 10px 0;'>
                             <strong>{i+1}. {title}</strong><br>
                             <small>👥 {author_names} | 📅 {year} | 📊 {citation_count} citations</small>
                         </div>

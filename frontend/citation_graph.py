@@ -108,14 +108,15 @@ def render_citation_graph_ui():
         # PDF count and info
         if selected_pdfs:
             st.markdown(f"""
-            <div style="background-color: #e8f5e8; padding: 1rem; border-radius: 8px; text-align: center;">
+
+            <div style="background-color: rgba(40, 167, 69, 0.1); color: inherit; padding: 1rem; border-radius: 8px; text-align: center;">
                 <h4 style="color: #28a745; margin: 0;">Selected PDFs</h4>
                 <p style="font-size: 2rem; margin: 0.5rem 0; color: #28a745;">{len(selected_pdfs)}</p>
             </div>
             """, unsafe_allow_html=True)
         else:
             st.markdown("""
-            <div style="background-color: #fff3cd; padding: 1rem; border-radius: 8px; text-align: center;">
+            <div style="background-color: rgba(255, 193, 7, 0.1); color: inherit; padding: 1rem; border-radius: 8px; text-align: center;">
                 <h4 style="color: #856404; margin: 0;">No PDFs Selected</h4>
                 <p style="color: #856404; margin: 0.5rem 0;">Select papers above</p>
             </div>

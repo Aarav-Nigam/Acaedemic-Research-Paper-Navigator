@@ -32,7 +32,6 @@
   * 📚 **Literature Scout Agent**: Fetches related papers based on topic keywords.
   * 📝 **Summarizer Agent**: Generates concise TL;DR, highlights limitations, and contributions.
   * 🤖 **Q\&A Tutor Agent**: Answers technical questions from paper using semantic retrieval.
-  * 🧭 **Map Curator Agent**: Updates and lays out citation maps with topic clusters.
   * 🧠 **Insight Archivist Agent**: Stores personalized notes and highlights.
   * 🔄 **Updater Agent**: Checks for newer papers or citations weekly (like a mini research digest).
 
@@ -93,3 +92,51 @@
 The tool is designed to remain **free** for students, researchers, and the broader academic community. MIT license or AGPL preferred to ensure future openness. You are encouraged to contribute or fork it to suit niche use cases!
 
 ---
+
+# ⚡️ Project Status & Implementation Notes
+
+This project is an early-stage prototype focused on core research paper navigation features. The following reflects what is currently implemented and used:
+
+- **PDF Upload & Metadata Extraction:**  
+  Users can upload PDFs. Metadata (title, authors, abstract) is extracted using **PyMuPDF** and basic regex heuristics.
+
+- **arXiv Fetching:**  
+  Fetching via [arXiv API](https://arxiv.org/help/api/index) is supported for metadata and PDF download.
+
+- **Section Highlighting:**  
+  Basic section detection (Abstract, Introduction, etc.) is implemented using simple text matching.
+
+- **Semantic Search & Q\&A:**  
+  A minimal **RAG** pipeline is set up using **ChromaDB** for vector storage and **OpenAI GPT-3.5** for Q\&A.  
+  (No support yet for Mistral, Phi-3, or HuggingFace models.)
+
+- **Citation Extraction:**  
+  Citations are extracted from PDFs using **PyMuPDF**.  
+  (No Grobid integration yet.)
+
+- **Visualization:**  
+  Citation graphs are visualized using **NetworkX** and **PyVis**.  
+  (No D3.js or Mermaid.js support yet.)
+
+- **Agents:**  
+  Modular agent logic is planned but not yet implemented.  
+  (No CrewAI integration yet.)
+
+- **Personalization:**  
+  Users can add notes and tag papers.  
+  (No learning from preferences or advanced tracking.)
+
+- **Experimental Features:**  
+  Not yet implemented (e.g., claim extraction, slide generator, dialogue agents).
+
+- **Tech Stack Used:**  
+  - **Frontend:** Streamlit  
+  - **PDF Parsing:** PyMuPDF  
+  - **Paper Fetching:** arXiv API  
+  - **RAG Pipeline:** ChromaDB, OpenAI GPT-3.5  
+  - **Visualization:** NetworkX, PyVis  
+  - **Storage:** Local file system  
+  - **Deployment:** Streamlit Community Cloud
+
+**Note:**  
+Many features listed below are aspirational or in-progress. See issues and roadmap for current development status.

@@ -167,7 +167,7 @@ def render_summary_ui():
                         with st.container():
                             st.markdown(
                                 f"""
-                                <div style='background-color: #f0f8ff; padding: 15px; border-radius: 10px; border-left: 4px solid #1f77b4; margin: 10px 0;'>
+                                <div style='background-color: rgba(31,119,180,0.1); color: inherit; padding: 15px; border-radius: 10px; border-left: 4px solid #1f77b4; margin: 10px 0;'>
                                     <strong>💭 Processing Steps:</strong><br>
                                     {parsed_response["thinking"].replace(chr(10), '<br>')}
                                 </div>
@@ -183,13 +183,12 @@ def render_summary_ui():
                     with st.container():
                         st.markdown(
                             f"""
-                            <div style='background-color: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 4px solid #28a745; margin: 10px 0;'>
+                            <div style='background-color: rgba(40,167,69,0.1); color: inherit; padding: 20px; border-radius: 10px; border-left: 4px solid #28a745; margin: 10px 0;'>
+                                {clean_summary}
                             </div>
                             """,
                             unsafe_allow_html=True
                         )
-                        # Render the summary as proper markdown
-                        st.markdown(clean_summary)
                     
                     # Store summary in session state for history
                     if "summary_history" not in st.session_state:
@@ -262,12 +261,12 @@ def render_summary_ui():
                     with st.container():
                         st.markdown(
                             f"""
-                            <div style='background-color: #f1f8e9; padding: 15px; border-radius: 8px; margin: 10px 0;'>
+                            <div style='background-color: rgba(40, 167, 69, 0.1); color: inherit; padding: 15px; border-radius: 10px; border-left: 4px solid #28a745; margin: 10px 0;'>
+                                {preview_text}
                             </div>
                             """,
                             unsafe_allow_html=True
                         )
-                        st.markdown(preview_text)
                     
                     if st.button(f"📖 Show Full Summary", key=f"expand_{history_num}"):
                         st.session_state[summary_key] = True
@@ -277,12 +276,12 @@ def render_summary_ui():
                     with st.container():
                         st.markdown(
                             f"""
-                            <div style='background-color: #f1f8e9; padding: 15px; border-radius: 8px; margin: 10px 0;'>
+                            <div style='background-color: rgba(40, 167, 69, 0.1); color: inherit; padding: 15px; border-radius: 10px; border-left: 4px solid #28a745; margin: 10px 0;'>
+                                {entry['summary']}
                             </div>
                             """,
                             unsafe_allow_html=True
                         )
-                        st.markdown(entry['summary'])
                     
                     if st.button(f"📄 Show Preview Only", key=f"collapse_{history_num}"):
                         st.session_state[summary_key] = False
@@ -292,12 +291,12 @@ def render_summary_ui():
                 with st.container():
                     st.markdown(
                         f"""
-                        <div style='background-color: #f1f8e9; padding: 15px; border-radius: 8px; margin: 10px 0;'>
+                        <div style='background-color: rgba(40, 167, 69, 0.1); color: inherit; padding: 15px; border-radius: 10px; border-left: 4px solid #28a745; margin: 10px 0;'>
+                            {entry['summary']}
                         </div>
                         """,
                         unsafe_allow_html=True
                     )
-                    st.markdown(entry['summary'])
             
             st.markdown("---")  # Separator between entries
     

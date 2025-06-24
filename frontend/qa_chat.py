@@ -122,7 +122,7 @@ def render_chat_ui():
                         with st.container():
                             st.markdown(
                                 f"""
-                                <div style='background-color: #f0f8ff; padding: 15px; border-radius: 10px; border-left: 4px solid #1f77b4; margin: 10px 0;'>
+                                <div style='background-color: rgba(31, 119, 180, 0.1); color: inherit; padding: 15px; border-radius: 10px; border-left: 4px solid #1f77b4; margin: 10px 0;'>
                                     <strong>💭 Thinking:</strong><br>
                                     {parsed_response["thinking"].replace(chr(10), '<br>')}
                                 </div>
@@ -152,7 +152,7 @@ def render_chat_ui():
                                 # Display content in a nice box
                                 st.markdown(
                                     f"""
-                                    <div style='background-color: #f8f9fa; padding: 15px; border-radius: 10px; border-left: 4px solid #28a745; margin: 10px 0;'>
+                                    <div style='background-color: rgba(40, 167, 69, 0.1); color: inherit; padding: 15px; border-radius: 10px; border-left: 4px solid #28a745; margin: 10px 0;'>
                                         {doc.page_content[:400]}{'...' if len(doc.page_content) > 400 else ''}
                                     </div>
                                     """,
@@ -185,7 +185,7 @@ def render_chat_ui():
                 st.markdown("**👤 You asked:**")
                 st.markdown(
                     f"""
-                    <div style='background-color: #e3f2fd; padding: 10px; border-radius: 8px; margin: 5px 0;'>
+                    <div style='background-color: rgba(33, 150, 243, 0.1); color: inherit; padding: 10px; border-radius: 8px; margin: 5px 0;'>
                         {q}
                     </div>
                     """,
@@ -196,7 +196,7 @@ def render_chat_ui():
                 st.markdown("**🤖 Assistant:**")
                 st.markdown(
                     f"""
-                    <div style='background-color: #f1f8e9; padding: 10px; border-radius: 8px; margin: 5px 0;'>
+                    <div style='background-color: rgba(139, 195, 74, 0.1); color: inherit; padding: 10px; border-radius: 8px; margin: 5px 0;'>
                         {a}
                     </div>
                     """,
