@@ -277,7 +277,7 @@ def load_retriever(user_session_id):
 
 def build_qa_chain(retriever):
     llm = ChatGroq(
-        model="qwen-qwq-32b", 
+        model="qwen/qwen3-32b", 
         groq_api_key=os.environ["GROQ_API"],
         temperature=0.7
     )
