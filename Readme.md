@@ -15,17 +15,39 @@
   * Extract metadata (title, authors, abstract, publication date).
   * Identify and highlight sections (Abstract, Methodology, Results, etc.) using NLP heuristics.
 
+  ![Paper Ingestion Image](/images/im_in.png)
+
+
 * **🧠 Semantic Search + Q\&A (via RAG)**
 
   * Build a vector index from paper content using **ChromaDB** or **FAISS**.
   * Ask research-specific questions (e.g., "What is the main contribution?" or "How does it compare with XYZ?").
   * Uses **LangChain** with models like **OpenAI GPT**, **Mistral**, or **Phi-3** for reasoning.
 
+  ![Example Image](/images/qa1.png)
+  ![Example Image](/images/qa2.png)
+
+
+* **📝 Summary Generation**
+
+  * Automatically generates concise summaries for uploaded or fetched papers.
+  * Uses LLMs (OpenAI GPT, Mistral, Phi-3) to distill key points, contributions, and limitations.
+  * Supports section-wise summarization (e.g., Abstract, Methods, Results).
+  * Enables quick TL;DR for rapid literature review.
+
+  ![Example Image](/images/summary1.png)
+  ![Example Image](/images/summary2.png)
+
+  
+
 * **🗺️ Citation-Based Mind Mapping**
 
   * Extract citations using **PyMuPDF** or **Grobid**.
   * Construct a **temporal knowledge graph** using **NetworkX** and visualize it with **PyVis**, **D3.js**, or **Mermaid.js**.
   * Highlight thematic clusters (e.g., foundational papers vs. recent breakthroughs).
+  ![Example Image](/images/citation1.png)
+  ![Example Image](/images/citation2.png)
+  ![Example Image](/images/citation3.png)
 
 * **👥 CrewAI Agents for Modular Research Tasks**
 
@@ -34,6 +56,9 @@
   * 🤖 **Q\&A Tutor Agent**: Answers technical questions from paper using semantic retrieval.
   * 🧠 **Insight Archivist Agent**: Stores personalized notes and highlights.
   * 🔄 **Updater Agent**: Checks for newer papers or citations weekly (like a mini research digest).
+
+  ![Example Image](/images/crew.png)
+
 
 * **🧑‍🎓 Personalization**
 
