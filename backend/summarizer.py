@@ -10,7 +10,7 @@ def summarize_text(text, custom_prompt=""):
     """Generate summary using Groq API with optional custom prompt"""
     try:
         llm = ChatGroq(
-            model="qwen/qwen/qwen3-32b",
+            model="qwen/qwen3-32b",
             groq_api_key=os.getenv("GROQ_API"),
             temperature=0.3
         )

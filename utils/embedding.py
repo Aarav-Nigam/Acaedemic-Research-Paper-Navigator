@@ -10,7 +10,10 @@ load_dotenv()
 os.environ["HF_TOKEN"] = os.getenv("HUGGINGFACE_TOKEN")
 
 def get_embedding_model():
-    return HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+    return HuggingFaceEmbeddings(
+        model_name="sentence-transformers/all-MiniLM-L6-v2",
+        model_kwargs={"device": "cpu"}   # ✅ prevents meta tensor issue
+    )
 
 def save_embeddings(chunks_with_metadata, user_session_id):
     """Save embeddings for user session with metadata"""
